@@ -3,35 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 import Block from "./block/block";
 
-class App extends Component {
-    blocks=[{
-        title:"Block1",
+const  blocks=[{
+    title:"Block1",
+    desc:"Black1 desc..."
+},
+    {
+        title:"Block2",
         desc:"Black1 desc..."
-        },
-        {
-            title:"Block2",
-            desc:"Black1 desc..."
-        },
-        {
-            title:"Block3",
-            desc:"Black1 desc..."
-        },
-        {
-            title:"Block4",
-            desc:"Black1 desc..."
-        },
-        {
-            title:"Block5",
-            desc:"Black1 desc..."
-        },
-        {
-            title:"Block6",
-            desc:"Black1 desc..."
-        }];
+    },
+    {
+        title:"Block3",
+        desc:"Black1 desc..."
+    },
+    {
+        title:"Block4",
+        desc:"Black1 desc..."
+    },
+    {
+        title:"Block5",
+        desc:"Black1 desc..."
+    },
+    {
+        title:"Block6",
+        desc:"Black1 desc..."
+    }];
+class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { width: 0 };
+        this.state = { width: 0, blocks: blocks };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
@@ -55,6 +55,11 @@ class App extends Component {
         else return "90%";
 
     };
+    onBlockDelete = (index) =>{
+      const blocks=this.state.blocks;
+      blocks.splice(index,1);
+      this.setState({blocks});
+    };
   render() {
       const width= this.getWidthPercent(this.state.width);
     return (
@@ -65,8 +70,8 @@ class App extends Component {
         </header>
        <div style={{display: "flex", flexWrap: "wrap"}}>
            {
-               this.blocks.map((block,index)=>{
-                   return (<Block key={index} width={width} item={block}/>)
+               this.state.blocks.map((block,index)=>{
+                   return (<Block key={index} index={index} onBlockDelete={this.onBlockDelete} width={width} item={block}/>)
                })
            }
        </div>

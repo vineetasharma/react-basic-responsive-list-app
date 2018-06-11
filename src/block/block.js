@@ -19,6 +19,9 @@ class Block extends Component {
         });
         console.log('leave');
     };
+    delete = () =>{
+        this.props.onBlockDelete(this.props.index);
+    };
     render() {
         return (
             <div
@@ -34,7 +37,7 @@ class Block extends Component {
                     this.state.hover ? (<div>
                         <span>Open</span>
                         <span>Print</span>
-                        <span>Delete</span>
+                        <span onClick={this.delete}>Delete</span>
                     </div>): <div/>
                 }
                 <p style={{"padding":5}}>
