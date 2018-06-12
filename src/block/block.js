@@ -32,7 +32,8 @@ class Block extends Component {
                     backgroundColor: "#a1a1a1",
                     width: this.props.width,
                     height: 100,
-                    backgroundImage: `url(${backgroundImg})`
+                    backgroundImage: `url(${backgroundImg})`,
+                    backgroundSize: "cover"
                 }}
                 onMouseEnter={this.onMouseEnterHandler}
                 onMouseLeave={this.onMouseLeaveHandler}
