@@ -66,15 +66,21 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          <h1 className="App-title">Welcome to List View</h1>
+          <h1 className="App-title">Welcome to Block Listing Demo App</h1>
         </header>
-       <div style={{display: "flex", flexWrap: "wrap"}}>
-           {
-               this.state.blocks.map((block,index)=>{
-                   return (<Block key={index} index={index} onBlockDelete={this.onBlockDelete} width={width} item={block}/>)
-               })
-           }
-       </div>
+          {
+            this.state.blocks.length ? (<div style={{display: "flex", flexWrap: "wrap", margin: "1%"}}>
+                {
+                    this.state.blocks.map((block,index)=>{
+                        return (<Block key={index} index={index} onBlockDelete={this.onBlockDelete} width={width} item={block}/>)
+                    })
+                }
+            </div>) : (<div
+                style={{ margin: "10%" }}
+            >
+                <h3>Oops!! No Blocks! Try to reload the page</h3>
+            </div>)
+          }
       </div>
     );
   }

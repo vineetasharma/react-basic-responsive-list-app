@@ -68,8 +68,8 @@ class Block extends Component {
                         }}
                     >
                         <span style={{padding: 5, cursor: "not-allowed", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#fff"}}>Open</span>
-                        <span style={{padding: 5,    cursor: "not-allowed", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#fff"}}>Print</span>
-                        <span style={{padding: 5,    cursor: "pointer", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#f00"}} onClick={this.delete}>X</span>
+                        <span style={{padding: 5, cursor: "not-allowed", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#fff"}}>Print</span>
+                        <span style={{padding: 5, cursor: "pointer", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#f00"}} onClick={this.delete}>X</span>
                     </div>): <div/>
                 }
             </div>
