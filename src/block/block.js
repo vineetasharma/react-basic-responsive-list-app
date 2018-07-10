@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import icon from '../images/logo.png';
-import backgroundImg from '../images/background.jpeg';
+import {styles} from './styles';
 
 class Block extends Component {
     constructor(){
@@ -25,32 +25,24 @@ class Block extends Component {
         this.props.onBlockDelete(this.props.index);
     };
     render() {
-        return (
+        const stylesObj= styles(this.props);
+          return (
             <div
-                style={{
-                    margin: 10,
-                    backgroundColor: "#a1a1a1",
-                    width: this.props.width,
-                    height: 100,
-                    backgroundImage: `url(${backgroundImg})`,
-                    backgroundSize: "cover"
-                }}
+                style={stylesObj.blockContainer}
                 onMouseEnter={this.onMouseEnterHandler}
                 onMouseLeave={this.onMouseLeaveHandler}
             >
                 <div>
                     <div
-                        style={{
-                            display: "inline-flex"
-                        }}
+                        style={stylesObj.inlineFlex}
                     >
-                        <img src={icon} width="50" height="50" style={{"padding":5}} />
+                        <img src={icon} width="50" height="50" style={stylesObj.padding5} />
                         <h3>
                             {this.props.item.title}
                         </h3>
                     </div>
                     <div>
-                        <p style={{"padding":5}}>
+                        <p style={stylesObj.padding5}>
                             {this.props.item.desc}
                         </p>
                     </div>
@@ -59,17 +51,11 @@ class Block extends Component {
 
                 {
                     this.state.hover ? (<div
-                        style={{
-                            top: -120,
-                            zIndex: 1000,
-                            position: "relative",
-                            left: 5,
-                            display: "flex"
-                        }}
+                        style={stylesObj.hoverState}
                     >
-                        <span style={{padding: 5, cursor: "not-allowed", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#fff"}}>Open</span>
-                        <span style={{padding: 5, cursor: "not-allowed", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#fff"}}>Print</span>
-                        <span style={{padding: 5, cursor: "pointer", margin: 5, borderRadius: 4, backgroundColor: "#b1b1b1", color:"#f00"}} onClick={this.delete}>X</span>
+                        <span style={stylesObj.disabledIcon}>Open</span>
+                        <span style={stylesObj.disabledIcon}>Print</span>
+                        <span style={stylesObj.activeIcon} onClick={this.delete}>X</span>
                     </div>): <div/>
                 }
             </div>
